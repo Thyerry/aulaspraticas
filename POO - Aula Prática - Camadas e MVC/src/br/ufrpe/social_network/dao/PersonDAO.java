@@ -2,21 +2,19 @@ package br.ufrpe.social_network.dao;
 
 import java.util.ArrayList;
 
-
 import br.ufrpe.social_network.negocio.beans.Person;
 
 public class PersonDAO {
 
 	private ArrayList<Person> person;
-	private int next;
-	private static PersonDAO pdao = new PersonDAO();
+	private static PersonDAO instancia = new PersonDAO();
 
 	private PersonDAO() {
 
 	}
 
 	public static PersonDAO getInstance() {
-		return pdao;
+		return instancia;
 	}
 
 	public void Cadastro(Person p) {
@@ -27,7 +25,7 @@ public class PersonDAO {
 		int indice = 0;
 		boolean achou = false;
 
-		while ((achou != true) && (indice < this.next)) {
+		while ((achou != true) && (indice < this.person.size())) {
 			if (id == this.person.get(indice).getId()) {
 				achou = true;
 			} else {
@@ -42,7 +40,7 @@ public class PersonDAO {
 
 		int i = this.procuraIndice(id);
 		Person resultado = null;
-		if (i != this.next) {
+		if (i != this.person.size()) {
 			resultado = this.person.get(i);
 		}
 		return resultado;
@@ -51,7 +49,7 @@ public class PersonDAO {
 	public void Remove(long id) {
 		int i = this.procuraIndice(id);
 
-		if (i != this.next) {
+		if (i != this.person.size()) {
 			this.person.remove(i);
 			System.out.println("Pessoa com id \"" + "\" foi excluída");
 		} else {
@@ -61,12 +59,12 @@ public class PersonDAO {
 
 	public void Atualiza(Person person) {
 		int i = this.procuraIndice(person.getId());
-		
-		if (i != this.next) {
+
+		if (i != this.person.size()) {
 			this.person.get(i).setBirthDate(person.getBirthDate());
 			this.person.get(i).setCountry(person.getCountry());
 			this.person.get(i).setName(person.getName());
-			
+
 			System.out.println("O cadastro foi atualizado!");
 		} else
 			System.out.println("Conta não existe!");

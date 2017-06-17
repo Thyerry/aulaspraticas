@@ -15,7 +15,7 @@ public class Fachada {
 
 	}
 
-	public Fachada getInstance() {
+	public static Fachada getInstance() {
 		return fac;
 	}
 

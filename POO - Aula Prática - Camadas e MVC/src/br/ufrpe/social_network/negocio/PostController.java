@@ -26,9 +26,9 @@ public class PostController {
 		postsRepository.NovoPost(p);
 	}
 
-	public Post find(Post p) {
+	public Post find(long id) {
 		Post post = new Post();
-		postsRepository.procuraPost(p.getId());
+		postsRepository.procuraPost(id);
 		return post;
 	}
 

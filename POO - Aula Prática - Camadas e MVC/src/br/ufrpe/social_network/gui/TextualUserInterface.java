@@ -29,7 +29,7 @@ public class TextualUserInterface {
     	fac.savePerson(p2);
     	fac.savePerson(p3);
     	fac.savePerson(p4);
-    	
+    	////////////////
     	System.out.println(p1 +"\n"
     					 + p2 +"\n"
     					 + p3 +"\n" 
